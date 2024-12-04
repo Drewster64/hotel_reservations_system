@@ -5,3 +5,9 @@ class Config:
     MYSQL_PASSWORD = 'JimmyNeutron'
     MYSQL_DB = 'hotel_reservations'
 
+    # MySQL URI for SQLAlchemy
+    SQLALCHEMY_DATABASE_URI = f'mysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}/{MYSQL_DB}'
+
+    # Optional: Disable track modifications to save memory
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
