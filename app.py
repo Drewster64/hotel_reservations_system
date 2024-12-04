@@ -3,10 +3,14 @@ from config import Config
 from models import db
 from flask_login import LoginManager
 from routes.auth_routes import auth_bp
+from flask import Flask
+from config import Config
+from models import db, Usuario  # Asegúrate de que la clase Usuario esté importada desde models
+from flask_login import LoginManager
+from routes.auth_routes import auth_bp
 from routes.cliente_routes import cliente_bp
 from routes.habitacion_routes import habitacion_bp
 from routes.reserva_routes import reserva_bp
-from models import Usuario  # Asegúrate de que la clase Usuario esté importada
 
 app = Flask(__name__)
 app.config.from_object(Config)
