@@ -1,49 +1,46 @@
 from flask import Flask, jsonify
-from config import Config
-from models import db, Usuario  # Asegúrate de que la clase Usuario esté importada desde models
-from flask_login import LoginManager
-from flask_cors import CORS  # Importa CORS
-from routes.auth_routes import auth_bp
-from routes.cliente_routes import cliente_bp
-from routes.habitacion_routes import habitacion_bp
-from routes.reserva_routes import reserva_bp
-from flask_sqlalchemy import SQLAlchemy
+from config import Config  # Carga la configuración de la app desde config.py
+from models import db, Usuario  # Importa la base de datos y el modelo Usuario
+from flask_login import LoginManager  # Para manejar la autenticación
+from flask_cors import CORS  # Permite solicitudes CORS
+from routes.auth_routes import auth_bp  # Blueprint para autenticación
+from routes.cliente_routes import cliente_bp  # Blueprint para clientes
+from routes.habitacion_routes import habitacion_bp  # Blueprint para habitaciones
+from routes.reserva_routes import reserva_bp  # Blueprint para reservas
+from flask_sqlalchemy import SQLAlchemy  # Extensión para gestionar base de datos
 
 # Inicializa la aplicación Flask
 app = Flask(__name__)
-app.config.from_object(Config)
+app.config.from_object(Config)  # Configuración de la app
 
-# Configurar CORS para permitir solicitudes de cualquier origen en las rutas de la API
+# Habilita CORS para la API
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
-# Configurar la base de datos
+# Configura la base de datos
 db = SQLAlchemy(app)
 
-# Configurar Flask-Login
+# Configura Flask-Login para la autenticación de usuarios
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'auth.login'
 
-# Método load_user para Flask-Login
+# Carga un usuario desde la base de datos
 @login_manager.user_loader
 def load_user(user_id):
     cursor = db.connection.cursor()
     cursor.execute("SELECT * FROM usuarios WHERE id = %s", (user_id,))
     row = cursor.fetchone()
     if row:
-        # Asumimos que la clase Usuario está definida y toma los valores del cursor
         return Usuario(id=row[0], email=row[1], password=row[2], nombre=row[3], rol=row[4])
-    else:
-        return None
+    return None
 
-# Registrar Blueprints
+# Registra los blueprints para las rutas de la app
 app.register_blueprint(auth_bp)
 app.register_blueprint(cliente_bp, url_prefix='/clientes')
 app.register_blueprint(habitacion_bp, url_prefix='/habitaciones')
 app.register_blueprint(reserva_bp, url_prefix='/reservas')
 
-# Error Handlers
-
+# Manejadores de errores
 @app.errorhandler(404)
 def not_found(error):
     return jsonify({'message': 'Recurso no encontrado'}), 404
@@ -52,6 +49,7 @@ def not_found(error):
 def server_error(error):
     return jsonify({'message': 'Error interno del servidor'}), 500
 
+# Ejecuta la aplicación en el puerto 5000
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
 

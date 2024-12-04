@@ -1,13 +1,13 @@
 class Config:
+    # Clave secreta utilizada por Flask para sesiones y protección de formularios
     SECRET_KEY = 'BrainBlast'
-    MYSQL_HOST = '172.16.254.115'  # IP de VM1
-    MYSQL_USER = 'hotel_user'
-    MYSQL_PASSWORD = 'JimmyNeutron'
-    MYSQL_DB = 'hotel_reservations'
+    
+    # Configuración de la base de datos MySQL
+    MYSQL_HOST = '172.16.254.115'  # Dirección IP de la máquina que aloja MySQL (VM1)
+    MYSQL_USER = 'hotel_user'  # Nombre de usuario para acceder a MySQL
+    MYSQL_PASSWORD = 'JimmyNeutron'  # Contraseña del usuario MySQL
+    MYSQL_DB = 'hotel_reservations'  # Nombre de la base de datos MySQL
 
-    # MySQL URI for SQLAlchemy
+    # URI de conexión a la base de datos MySQL para SQLAlchemy
     SQLALCHEMY_DATABASE_URI = f'mysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}/{MYSQL_DB}'
-
-    # Optional: Disable track modifications to save memory
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
 

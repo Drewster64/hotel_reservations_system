@@ -4,14 +4,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from models import db
 from models.usuario import Usuario  # Asegúrate de que el modelo Usuario esté correctamente importado
 
-auth_bp = Blueprint('auth', __name__)
+auth_bp = Blueprint('auth', __name__)  # Crea un blueprint para la autenticación
 
 # Ruta para el login
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
+        email = request.form['email']  # Obtiene el email ingresado
+        password = request.form['password']  # Obtiene la contraseña ingresada
 
         # Verificar las credenciales del usuario en la base de datos
         cursor = db.connection.cursor()
@@ -33,10 +33,10 @@ def login():
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-        nombre = request.form['nombre']
-        rol = request.form['rol']
+        email = request.form['email']  # Obtiene el email ingresado
+        password = request.form['password']  # Obtiene la contraseña ingresada
+        nombre = request.form['nombre']  # Obtiene el nombre del usuario
+        rol = request.form['rol']  # Obtiene el rol del usuario (cliente o admin)
 
         # Verificar si el email ya está registrado
         cursor = db.connection.cursor()
