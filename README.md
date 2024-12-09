@@ -144,5 +144,4 @@ Por defecto, estará disponible en `http://127.0.0.1:5000`.
 
 ## Notas
 
-1. Asegúrate de inicializar la base de datos ejecutando los scripts correspondientes.
-2. Configura correctamente los permisos para endpoints protegidos.
+1. Configura correctamente los permisos para endpoints protegidos.
