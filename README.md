@@ -16,8 +16,8 @@ Esta API, desarrollada con Flask, permite gestionar usuarios, clientes, habitaci
 
 1. Clona el repositorio:
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
-   cd <NOMBRE_DEL_PROYECTO>
+   git clone <https://github.com/Drewster64/hotel_reservations_system/tree/main>
+   cd <Hotel_reservations_system>
    ```
 
 2. Crea un entorno virtual e instala las dependencias:
