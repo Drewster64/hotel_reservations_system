@@ -5,6 +5,7 @@ Esta API, desarrollada con Flask, permite gestionar usuarios, clientes, habitaci
 ## Tabla de Contenidos
 - [Requisitos](#requisitos)
 - [Instalación](#instalación)
+- [Máquinas Virtuales y sus IPs](#máquinas-virtuales-y-sus-ips)
 - [Configuración](#configuración)
 - [Rutas Disponibles](#rutas-disponibles)
 - [Manejo de Errores](#manejo-de-errores)
@@ -36,6 +37,23 @@ Esta API, desarrollada con Flask, permite gestionar usuarios, clientes, habitaci
 
 ---
 
+## Máquinas Virtuales y sus IPs
+
+Esta API está distribuida en tres capas, cada una corriendo en una máquina virtual diferente. Las IPs de las máquinas virtuales son las siguientes:
+
+1. **VM1 (Capa de Presentación)**:
+   - **Propietario**: Benyahir
+   - **IP**: `172.16.5.65`
+
+2. **VM2 (Capa Lógica)**:
+   - **Propietario**: Emmanuel
+   - **IP**: `172.16.5.255`
+
+3. **VM3 (Capa de Base de Datos)**:
+   - **Propietario**: John
+   - **IP**: `172.16.254.115`
+
+---
 ## Configuración
 
 El archivo `config.py` debe incluir las siguientes variables:
