@@ -1,0 +1,7 @@
+## Requisitos
+
+- Python 3.8+
+- Flask
+- Flask-SQLAlchemy
+- Flask-Login
+- Flask-CORS
