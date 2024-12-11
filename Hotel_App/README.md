@@ -47,7 +47,7 @@ Esta API está distribuida en tres capas, cada una corriendo en una máquina vir
 
 2. **VM2 (Capa Lógica)**:
    - **Propietario**: Emmanuel
-   - **IP**: `172.16.5.255`
+   - **IP**: `172.16.5.165`
 
 3. **VM3 (Capa de Base de Datos)**:
    - **Propietario**: John

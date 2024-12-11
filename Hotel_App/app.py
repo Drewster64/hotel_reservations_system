@@ -50,6 +50,6 @@ def server_error(error):
     return jsonify({'message': 'Error interno del servidor'}), 500
 
 # Ejecuta la aplicación en el puerto 5000
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+if __name__ == "__main__":
+    app.run(host="172.16.5.165", port=5000)  
 
