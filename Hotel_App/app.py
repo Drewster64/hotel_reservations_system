@@ -13,8 +13,8 @@ from flask_sqlalchemy import SQLAlchemy  # Extensión para gestionar base de dat
 app = Flask(__name__)
 app.config.from_object(Config)  # Configuración de la app
 
-# Habilita CORS para la API
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+# Habilita CORS para todas las rutas
+CORS(app, resources={r"/*": {"origins": "*"}})  # Esto permite que cualquier origen realice peticiones a tu API
 
 # Configura la base de datos
 db = SQLAlchemy(app)
@@ -51,5 +51,4 @@ def server_error(error):
 
 # Ejecuta la aplicación en el puerto 5000
 if __name__ == "__main__":
-    app.run(host="172.16.5.165", port=5000)  
-
+    app.run(host="172.16.5.165", port=5000)
