@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel CAL- Reservas</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <h1 class="mt-4">Super Prueba</h1>
+        <p>Prueba</p>
+        
+    </div>
+
+    <!-- Footer -->
+	<div id="footer"></div>
+    <!-- Enlaces a JavaScript -->
+    <script src="../assets/js/jquery-3.6.4.min.js"></script> <!-- Asegúrate de que jQuery está cargado -->
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+    <script>          
+        //Cagar el header y el footer
+        $(document).ready(function() {
+            $('#header').load('../include/header.html');
+            $('#footer').load('../include/footer.html');
+        });
+        
+        
+            // Cargar habitaciones disponibles al cargar la página
+        $(document).ready(function() {
+
+  
+
+            // Verificar si el token de autenticación está presente en el almacenamiento local
+        var token = localStorage.getItem('token');
+        if (!token) {
+        // Redirigir al usuario a la página de login si no hay token
+        window.location.href = '../login.html';
+        }
+
+        // Realizar una solicitud AJAX para obtener las reservas del cliente
+        $.ajax({
+            url: '/api/reservas/cliente',
+            method: 'GET',
+            headers: {
+            'Authorization': 'Bearer ' + token
+            },
+            success: function(data) {
+            // Renderizar las reservas en la tabla
+            $.each(data, function(index, reserva) {
+                var row = `
+                    <tr>
+                        <td>${reserva.id}</td>
+                        <td>${reserva.habitacion_numero}</td>
+                        <td>${reserva.fecha_inicio}</td>
+                        <td>${reserva.fecha_fin}</td>
+                        <td>${reserva.estado}</td>
+                    </tr>
+                `;
+                $('#tabla-reservas tbody').append(row);
+            });
+            
+            // Inicializar el DataTable para la tabla de reservas
+            $('#tabla-reservas').DataTable();
+        },
+        error: function(error) {
+            // Manejar errores en la carga de reservas
+            alert('Error al cargar las reservas');
+        }
+    });
+    });
+    </script>
+</body>
+</html>
+

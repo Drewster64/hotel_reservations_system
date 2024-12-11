@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Meta y enlaces a CSS -->
+    <meta charset="UTF-8">
+    <title>Hotel CAL - Reservas</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/jquery.dataTables.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <h1 class="mt-4">Administración de Reservas</h1>
+        <table id="tabla-reservas" class="display">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Habitación</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Contenido cargado mediante AJAX -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Enlaces a JavaScript -->
+    <script src="../assets/js/jquery-3.6.4.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#tabla-reservas').DataTable({
+                "ajax": {
+                    "url": "/api/reservas",
+                    "dataSrc": ""
+                },
+                "columns": [
+                    { "data": "id" },
+                    { "data": "cliente_nombre" },
+                    { "data": "habitacion_numero" },
+                    { "data": "fecha_inicio" },
+                    { "data": "fecha_fin" },
+                    { "data": "estado" }
+                ]
+            });
+ 
+        })
+
+        $(document).ready(function () {
+            // Incluir el footer y header
+			$('#header').load('../include/header.html');
+			$('#footer').load('../include/footer.html');
+        });
+
+    </script>
+</body>
+</html>
