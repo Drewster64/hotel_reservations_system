@@ -7,34 +7,42 @@
     <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
+    <!--Header-->
     <div id="header"></div>
 
     <div class="container">
     <h1 class="mt-4">Bienvenido al perfil de usuario</h1>
     </div>
+    
+    <div class="container profile-container">
+        <!-- Imagen de perfil centrada -->
+        <img src="https://plus.unsplash.com/premium_photo-1689530775582-83b8abdb5020?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tJTIwcGVyc29ufGVufDB8fDB8fHww" alt="Imagen de perfil" class="profile-picture">
+    </div>
 
+    <!--Informacion del usuario-->
     <div class="container">
         <h2 class="mt-4">Información del Usuario</h2>
         <p><strong>Nombre:</strong> Juan Pérez</p>
         <p><strong>Email:</strong> juanperez@example.com</p>
         <p><strong>Teléfono:</strong> +34 600 123 456</p>
 
-        <button class="btn btn-primary">Ver mis Reservaciones</button>
+        <button class="btn btn-secondary">Ver mis Reservaciones</button>
     </div>
 
+    <!--Footer-->
     <div id="footer"></div>
+
+    <!--Enlaces hacia JavaScript-->
     <script src="../assets/js/jquery-3.6.4.min.js"></script> 
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/main.js"></script>
 
     <script>
         $(document).ready(function() {
+            // Carga del header y footer desde archivos externos
         $('#header').load('../include/header.html');
         $('#footer').load('../include/footer.html');
         });
-        //function verReservaciones() {
-      //      window.location.href = "reservaciones.html";
-       // }
     </script>
 </body>
 </html>

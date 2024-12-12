@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Meta y enlaces a CSS -->
+    <meta charset="UTF-8">
+    <title>Hotel CAL - Clientes Actuales</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/jquery.dataTables.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <h1 class="mt-4">Clientes Actuales en el Hotel</h1>
+
+        <!-- Tabla con los clientes actuales -->
+        <table id="tabla-clientes" class="display">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Habitación</th>
+                    <th>Fecha de Llegada</th>
+                    <th>Fecha de Salida</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Contenido cargado mediante AJAX (cliente actual en el hotel) -->
+            </tbody>
+        </table>
+
+        <!-- Botones para navegar -->
+        <div class="mt-4">
+            <button class="btn btn-secondary" href='reservas.html'>Ir a Reservas</button>
+            <button class="btn btn-secondary" href='habitaciones.html'>Ver Habitaciones Disponibles</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Enlaces a JavaScript -->
+    <script src="../assets/js/jquery-3.6.4.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Inicializamos la tabla de clientes actuales con DataTables
+            $('#tabla-clientes').DataTable({
+                "ajax": {
+                    "url": "/api/clientes",  // Aquí se especifica el endpoint de la API para obtener los clientes actuales
+                    "dataSrc": ""
+                },
+                "columns": [
+                    { "data": "id" },
+                    { "data": "cliente_nombre" },
+                    { "data": "habitacion_numero" },
+                    { "data": "fecha_llegada" },
+                    { "data": "fecha_salida" },
+                    { "data": "acciones", "render": function (data, type, row) {
+                        return `<button class="btn btn-info" onclick="verDetalles(${row.id})">Ver Detalles</button>`;
+                    }}
+                ]
+            });
+        });
+
+        $(document).ready(function () {
+            // Carga del header y footer desde archivos externos
+            $('#header').load('../include/header.html');
+            $('#footer').load('../include/footer.html');
+        });
+
+        // Función para ver detalles del cliente (puedes modificar esta funcionalidad según sea necesario)
+        function verDetalles(clienteId) {
+            // Puedes redirigir a otra página o mostrar más detalles
+            window.location.href = `detalle_cliente.html?id=${clienteId}`;
+        }
+    </script>
+</body>
+</html>

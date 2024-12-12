@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Meta y enlaces a CSS -->
+    <meta charset="UTF-8">
+    <title>Hotel CAL - Habitaciones Disponibles</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/jquery.dataTables.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header"></div>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <h1 class="mt-4">Habitaciones Disponibles</h1>
+
+        <!-- Tabla con las habitaciones disponibles -->
+        <table id="tabla-habitaciones" class="display">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Habitación</th>
+                    <th>Tipo</th>
+                    <th>Precio por Noche</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí va el contenido cargado mediante AJAX -->
+            </tbody>
+        </table>
+
+        <!-- Botones para navegar -->
+        <div class="mt-4">
+            <button class="btn btn-secondary" href='reservas.html'>Ir a Reservas</button>
+            <button class="btn btn-secondary" href='clientes.html'>Ver Clientes Actuales</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Enlaces a JavaScript -->
+    <script src="../assets/js/jquery-3.6.4.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Inicializamos la tabla de habitaciones disponibles con DataTables
+            $('#tabla-habitaciones').DataTable({
+                "ajax": {
+                    "url": "/api/habitaciones/disponibles",  // Endpoint para obtener las habitaciones disponibles
+                    "dataSrc": ""
+                },
+                "columns": [
+                    { "data": "id" },
+                    { "data": "numero" },
+                    { "data": "tipo" },
+                    { "data": "precio_noche" },
+                    { "data": "estado", "render": function (data) {
+                        return data === 'disponible' ? 
+                            '<span class="badge bg-success">Disponible</span>' : 
+                            '<span class="badge bg-danger">Ocupada</span>';
+                    }}
+                ]
+            });
+        });
+
+        $(document).ready(function () {
+            // Carga del header y footer desde archivos externos
+            $('#header').load('../include/header.html');
+            $('#footer').load('../include/footer.html');
+        });
+    </script>
+</body>
+
+</html>

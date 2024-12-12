@@ -1,3 +1,19 @@
 body{
 	padding-top: 70px;
 }
+.profile-picture {
+	width: 150px; /* Tamaño de la imagen */
+	height: 150px; /* Tamaño de la imagen */
+	border-radius: 50%; /* Hace la imagen circular */
+	object-fit: cover; /* Asegura que la imagen cubra todo el área */
+	/*margin: -1 auto; /* Centra la imagen */
+}
+
+.profile-container {
+	display: flex;
+	justify-content: right;
+	align-items: right;
+	flex-direction: column;
+	margin-top: 30px;
+	padding-left: 70px;
+}
