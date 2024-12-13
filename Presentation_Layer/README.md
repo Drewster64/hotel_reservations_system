@@ -46,16 +46,13 @@ Para ejecutar este proyecto correctamente, asegúrate de tener lo siguiente:
 - **Página de administrador sobre los clientes actuales (`admin/clientes.html`)**: Muestra a los administradores una lista de los clientes actuales que están hospedados en el hotel. La información se muestra en una tabla con detalles sobre la habitación, fecha de llegada y salida, al igual que un botón para ver detalles adicionales.
 - **Página de administrador de habitaciones disponibles (`admin/habitaciones.html`)**: Muestra una lista de las habitaciones disponibles en el hotel, con detalles como el tipo de habitación, precio por noche y estado (disponible u ocupada).
 - **Página de administrador de reservas (`admin/reservas.html`)**: Permite a los administradores gestionar todas las reservas realizadas, visualizar los detalles de cada reserva y cambiar su estado. Muestra una tabla con las reservas, que incluye el ID de la reserva, cliente, habitación, fechas de inicio y fin, tambien el estado de la reserva.
-- **Página de perfil de los clientes (`cliente/perfil.html`)**: Permite que el usuario pueda ver su perfil, conteniendo toda su informacion y llevarlo hacia sus reservaciones.
+- **Página de perfil de los clientes (`cliente/perfil.html`)**:  Permite que el usuario pueda ver su perfil, conteniendo toda su informacion y llevarlo hacia sus reservaciones.
 - **Página de reservas de los clientes (`cliente/reservas.html`)**: Permite que usuarain pueda inspecionar sus reservaciones en el hotel, pero si este no inicio sensión lo devuelve hacia la página login.
 - **Página del header (`include/header.html`)**: Página que contiene header que se utiliza en todas las paginas del proyecto.
 - **Página del footer (`include/footer.html`)**: Página que contiene el footer que es utilizado por todas las paginas del proyecto.
 - **Página de Css y JavaScript (`assets/css/styles.css` `assets/js/main.js`)**: En el style sheet es donde hicieron cambios para elementos para las paginas. En la pagina de java script habilito un detalle para la página de reservas que es inspeccionada por el cliente.  
 ---
 
-## **Problemas
-
-1. **Clonar el Repositorio**:
-   Si aún no has clonado el proyecto, puedes hacerlo con el siguiente comando:
-   ```bash
-   git clone https://github.com/usuario/hotel-cal.git
+## **Problemas y soluciones
+- **Incluyendo el header y footer en las paginas**: Al tratar de colocar estos originalmente se utilozo php para incluir estos pero esto resulto ser la manera ineficiente para hacerlo. Para resolverlo utilize comandos de Java Script para llamarlos adentro de sus carpetas y colocarlos en divisores que idican donde se colocaran.
+- **Nginx en la maquina no estaba en funcionamiento: Por una mayoria de 
